@@ -1,0 +1,8 @@
+@mixin height($height:auto) {
+    height: $height;
+    width: 100%;
+}
+@mixin font($kg:400) {
+    font-family: 'Bebas Neue', cursive;
+    font-weight: $kg;
+}
