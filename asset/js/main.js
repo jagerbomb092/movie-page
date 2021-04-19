@@ -1,19 +1,39 @@
 let langue = 'en'
-let num = 5
+let num = 54
 let baseURL =`https://api.themoviedb.org/3/discover/movie?api_key=1b79d7a7bdb69f136a8a39dcc2514e85&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${num}&with_watch_monetization_types=flatrate`+`&language=${langue}`
 let IMGPATH = "https://image.tmdb.org/t/p/w1280"
 let center = document.querySelector('.movie .container .row')
 let modalLoad = document.querySelector('.modal')
+let status =false
 
+// window.addEventListener('load',contentLoad)
+async function fetchAPI(){
+    let abc = await fetch(baseURL)
+    let xyz = await abc.json()
+    console.log(xyz);
+    callBack(xyz)
+    // setTimeout()
+    status=true
+    checkData()
+}
+checkData()
+fetchAPI()
+function checkData(){
+    if (status===false) {
+        modalLoad.classList.add('active')
+    } else {
+        modalLoad.classList.remove('active')
+    }
+}
 
-fetch(baseURL).then(data=>data.json())
-.then((info)=>{
-    callBack(info)
-})
-async function callBack(num){
+// fetch(baseURL).then(data=>data.json())
+// .then((info)=>{
+//     callBack(info)
+// })
+function callBack(num){
      
-    await window.addEventListener('load',contentLoad)
-    await num.results.forEach((nums) => {
+    
+    num.results.forEach((nums) => {
         let col = document.createElement('div')
         col.classList.add('col-lg-3', 'col-md-6' ,'col-sm-12')
         col.innerHTML = `
@@ -30,6 +50,10 @@ async function callBack(num){
     })
     
 }
-function contentLoad(){
-    modalLoad.classList.add('active')
-}
+// function contentLoad(){
+    
+//         modalLoad.classList.add('active')
+   
+       
+// }
+// setTimeout(contentLoad,)
