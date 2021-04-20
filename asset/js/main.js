@@ -1,9 +1,9 @@
 let langue = 'en'
-let num = 1
+let num 
 let baseURL =`https://api.themoviedb.org/3/discover/movie?api_key=1b79d7a7bdb69f136a8a39dcc2514e85&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${num}&with_watch_monetization_types=flatrate`+`&language=${langue}`
 let IMGPATH = "https://image.tmdb.org/t/p/original"
 let center = document.querySelector('.movie .container .row')
-let modalLoad = document.querySelector('.modal')
+let modalLoad = document.querySelector('.modalLoading')
 let status =false
 let abc = []
 let count = 0
@@ -14,9 +14,12 @@ async function fetchAPI(){
     console.log(xyz);
     callBack(xyz)
     // setTimeout()
+    
     status=true
-    checkData()
+        checkData()
+    
 }
+
 checkData()
 fetchAPI()
 function checkData(){
@@ -94,6 +97,10 @@ function clickFn(arr){
         // console.log(arrs);
     }
     
+    
+    
+}
+for (let index = 0; index> 0; index++) {
     
     
 }

@@ -1,0 +1,21 @@
+.modalLoading{
+    display: flex;
+    background: #fff;
+    opacity: 0;
+    visibility: visible;
+    align-items: center;
+    transition: all;
+    z-index: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    transition: all 0.1s ease-in-out;
+    &.active{
+        opacity: 1;
+        visibility: initial;
+        z-index: 10;
+    }
+}
