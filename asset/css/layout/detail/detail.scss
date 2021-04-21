@@ -1,11 +1,12 @@
+
 .detail{
     
         // background-position: center;
         // background-repeat: no-repeat;
         // background-size: cover;
-        height: 100vh;
+        height: auto;
         width: 100%;
-        padding-top: 50px;
+        padding:30px 0 50px 0;
     
     
     
@@ -15,7 +16,7 @@
         align-items: center;
         justify-content: center;
         border-radius: 10px;
-        background-color: #fff;
+        background-color: rgba(255, 255, 255, 0.527);
         padding: 50px 30px;
         margin: 100px 0;
         &__img{
@@ -34,7 +35,7 @@
             // align-items: center;
         }
         &__name{
-            font-size: 30px;
+            font-size: 40px;
             margin-bottom: 30px;
         }
         &__group{
@@ -48,24 +49,63 @@
                 & li:nth-child(1){
                     margin-right: 5px;
                 }
+                & li:nth-child(2){
+                    margin-right: 5px;
+                }
+                & li:nth-child(3){
+                    margin-right: 5px;
+                }
+                & li:nth-child(4){
+                    margin-right: 5px;
+                }
+                & li:nth-child(5){
+                    margin-right: 5px;
+                }
+                & li{
+                    display: flex;
+                    align-items: center;
+                    & a{
+                        color: $black;
+                        text-align: center;
+                       
+                    }
+
+                    
+                }
             }
         }
         &__button{
             display: flex;
             align-items: center;
-            margin: 5px 0;
+            margin: 20px 0;
+        }
+        &__date{
+            font-size: 20px;
+            margin: 20px 0;
         }
         &__score{
             margin-right: 15px;
-            margin: 5px 0;
+            margin: 20px 0;
+            font-size: 20px;
         }
         &__descript{
             font-size: 25px;
-            margin: 5px 0;
+            margin: 20px 0;
+            
         }
         &__director{
             display: flex;
             flex-direction: column;
+            
+            margin: 20px 0;
+            
+            & span{
+                font-size: 20px;
+                margin-bottom: 5px;
+                & a{
+                    color: $black;
+                }
+            }
         }
     }
 }
