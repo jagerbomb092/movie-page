@@ -1,10 +1,16 @@
 let langue = 'en'
-let num = 1
-console.log(num);
 
 
-console.log(num);
-let baseURL =`https://api.themoviedb.org/3/discover/movie?api_key=1b79d7a7bdb69f136a8a39dcc2514e85&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${num}&with_watch_monetization_types=flatrate`+`&language=${langue}`
+// console.log(num);
+
+
+let num = JSON.parse(localStorage.getItem('num')) 
+console.log(typeof(num));
+
+let baseURL =`https://api.themoviedb.org/3/discover/tv?api_key=1b79d7a7bdb69f136a8a39dcc2514e85&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=${num}&with_watch_monetization_types=flatrate`+`&language=${langue}`
+fetchAPI(baseURL)
+// console.log(num);
+
 // let baseURL =`https://api.themoviedb.org/3/discover/tv?api_key=1b79d7a7bdb69f136a8a39dcc2514e85&language=en-US&sort_by=popularity.desc&page=${num}&timezone=America%2FNew_York&include_null_first_air_dates=false&with_watch_monetization_types=flatrate`+`&language=${langue}`
 let IMGPATH = "https://image.tmdb.org/t/p/original"
 let center = document.querySelector('.movie .container .row')
@@ -13,7 +19,8 @@ let status =false
 let abc = []
 let count = 0
 // window.addEventListener('load',contentLoad)
-async function fetchAPI(){
+// Nextpage()
+async function fetchAPI(baseURL){
     let abc = await fetch(baseURL)
     let xyz = await abc.json()
     
@@ -40,7 +47,7 @@ function checkData(){
 //     callBack(info)
 // })
 function callBack(num){
-     
+     console.log(num);
     
     num.results.map((nums) => {
         let col = document.createElement('div')
@@ -79,7 +86,6 @@ async function getID(id){
 
 
 function clickFn(arr){
-    console.log(arr);
     // console.log(arr[0].id);
     let box = document.querySelectorAll('.movie-box')
     let link = document.querySelectorAll('.movie-box .movie-box__img')
@@ -90,7 +96,7 @@ function clickFn(arr){
             console.log(arr[i].id);
             // link.href  = './html/side-page.html'
             // if (typeof(Storage) !== "undefined") {
-                localStorage.setItem("id",arr[i].id)
+                localStorage.setItem("id",JSON.stringify(arr[i].id))
                 localStorage.setItem("type",arr[i].first_air_date)
             // } else {
                 
@@ -111,22 +117,38 @@ function createPage(){
     let page =  document.createElement('ul')
     document.body.appendChild(page)
     page.classList.add('moviepage')
-    let pages = [1,2,3,4,5]
+    let pages=[parseInt(num)-parseInt(2), parseInt(num)-parseInt(1),parseInt(num) ,parseInt(num)+parseInt(1),parseInt(num)+parseInt(2)]
+    console.log(pages);
     for (let i = 0; i < pages.length; i++) {
         let nums = pages[i];
-        page.innerHTML += `<li data-value=${nums} >${nums}</li>`
-        
+         
+        if (pages[i]<=0) {
+            // console.log(pages[i]);
+            pages.slice(pages[i],pages[i])
+            // pages.push(parseInt(num)+parseInt(3))
+            
+
+        }
+        else{
+            
+            page.innerHTML += `<li data-value=${nums}>${nums}</li>`
+        }
     }
-    
-    
-    // console.log(pagi);
-    
-    let pagi = document.querySelectorAll('.moviepage li')
-    console.log(pagi);
-    // console.log(page);
 }
-
-
-
-
+// let pagi = document.querySelectorAll('.moviepage li')
+//         pagi.forEach((pagis)=>{
+//             pagis.addEventListener('click',()=>{
+//                 console.log(pagtis);
+//             })
+//         })
 createPage()
+let pagi = document.querySelectorAll('.moviepage li')
+pagi.forEach(pagis => {
+    pagis.addEventListener('click',()=>{
+        let current = JSON.parse(pagis.getAttribute('data-value')) 
+        localStorage.setItem('num',current)
+        location.reload();
+    })
+});
+console.log(pagi);
+// Nextpage()

@@ -29,28 +29,46 @@ function API(link1,link2, func1,func2) {
             try{
                 let fetching = await fetch(link1)
                 let fetching2 = await fetch(link2)
-                let checkType = localStorage.getItem("type")
+                let checkType
+                function check(){
+                    
+                    if (localStorage.getItem("type") === null) {
+                        checkType = 0
+                    } else {
+                        checkType = localStorage.getItem("type")
+                    }
+                }
+                check()
+                console.log(checkType);
+                // let undi = ''
+                console.log(checkType.value);
+                // console.log(typeof(checkType));
+                console.log(checkType);
+                console.log(NaN);
+                console.log('movie:'+(checkType==='undefined'));
+                console.log('TV:'+(checkType!='undefined'));
+                console.log('TV:'+(checkType!='undefined' && fetching2.ok == true));
+                console.log('movie:'+(checkType==='undefined' && fetching.ok == true));
                 // console.log(checkType=undefined);
-                // console.log(checkType!=undefined);
                 // console.log(fetching.ok == true);
                 // console.log(fetching2.ok == true);
                 // console.log(checkType === undefined && fetching.ok == true);
                 // console.log(checkType!==undefined && fetching2.ok == true);
-                if (checkType!==undefined && fetching2.ok == true) {
+                if (checkType==='undefined' && fetching.ok == true) {
+                    let data = await fetching.json()
+                    func1(data)
+                    status = true
+                    checkData()
                     
                     
+                }
+                else if (checkType!='undefined'&& fetching2.ok == true) {
                     let data = await fetching2.json()
                     
                     func2(data)
                     status = true
                     checkData()
-                }
-                else {
                     
-                    let data = await fetching.json()
-                    func1(data)
-                    status = true
-                    checkData()
                 } 
             }
             catch{(err)=>console.log(err)}
@@ -75,14 +93,10 @@ reco.call()
 trai.call()
 dirrect.call()
 function showDirect(dr){
-    
     let create = dr.crew
-    console.log(create);
     let reulst =  create.filter((creates)=>{
-        
         return creates.known_for_department === "Directing"
     })
-    console.log(reulst);
     filterDir(reulst);
 }
 function filterDir(direct){
