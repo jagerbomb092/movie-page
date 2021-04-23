@@ -1,0 +1,11 @@
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & a:nth-child(1){
+        margin-right: 30px;
+    }
+    & a{
+        cursor: pointer;
+    }
+}

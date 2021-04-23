@@ -57,6 +57,15 @@ button {
 i {
   vertical-align: middle; }
 
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .header a:nth-child(1) {
+    margin-right: 30px; }
+  .header a {
+    cursor: pointer; }
+
 .modalLoading {
   display: flex;
   background: #fff;
@@ -123,9 +132,21 @@ i {
   align-items: center;
   justify-content: center;
   z-index: 11; }
+  .moviepage li:nth-child(1) {
+    margin-right: 10px; }
+  .moviepage li:nth-child(2) {
+    margin-right: 10px; }
+  .moviepage li:nth-child(3) {
+    margin-right: 10px; }
+  .moviepage li:nth-child(4) {
+    margin-right: 10px; }
   .moviepage li {
     cursor: pointer;
-    z-index: 3; }
+    z-index: 3;
+    font-size: 20px; }
+    .moviepage li.active {
+      background: #111;
+      color: #fff; }
 
 .detail {
   height: auto;

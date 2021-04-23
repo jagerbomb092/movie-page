@@ -6,7 +6,7 @@ let langue = 'en'
 let status =false
 
 
-let type = [`tv`,`movie`]
+// let type = [`tv`,`movie`]
 let modalLoad = document.querySelector('.modalLoading')
 let baseURL = `https://api.themoviedb.org/3/movie/${id}?api_key=1b79d7a7bdb69f136a8a39dcc2514e85` + `&language=${langue}`
 let recom = `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=1b79d7a7bdb69f136a8a39dcc2514e85` + `&language=${langue}`
